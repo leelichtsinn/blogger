@@ -1,8 +1,8 @@
 {
   "development": {
     "dialect": "postgres",
-    "username": "amy",
+    "username": "leelichtsinn",
     "password": "",
-    "database": "blogger_development"
+    "database": "blogger_developement"
   }
 }
