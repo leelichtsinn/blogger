@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var posts = require('./routes/posts');
 var comments = require('./routes/comments');
+var hello = require('./routes/hello');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/posts', posts);
 app.use('/comments', comments);
+app.use('/hello-world-react', hello);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
