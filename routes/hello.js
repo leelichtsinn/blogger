@@ -8,10 +8,14 @@ var router = express.Router();
 //   response.redirect('/posts');
 // });
 
-router.get('/hello-world-react', function(request, response, next) {
+router.get('/', function(request, response, next) {
   response.render('hello-world-react', {
     title: 'Hello React!'
   });
 });
+
+router.get('/monkey', (req, res, next)=>{
+  res.send("Hi");
+})
 
 module.exports = router;
