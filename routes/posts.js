@@ -71,5 +71,22 @@ router.post('/:id/edit', function(request, response) {
   });
 });
 
+router.get('/:id/comments', (request, response) => {
+  models.posts.findById(request.params.id, {
+    include: [models.comments],
+    order: [
+      [{model: models.comments}, 'createdAt', 'DESC']
+    ]
+  }).then((post) => response.json(post.postId.comments.content));
+});
+
+// POST /posts/:postId/comments/new
+// create new comment in db for a particular post
+router.post('/:id/comments/new', (request, response) => {
+  models.comments.create({
+    content: request.body.text,
+    postId: request.params.id
+  }).then((comment) => response.json(comment));
+});
 
 module.exports = router;

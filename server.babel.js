@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/posts', posts);
 app.use('/comments', comments);
-app.use('/hello-world-react', hello);
+// app.use('/hello-world-react', hello);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
