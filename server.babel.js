@@ -27,10 +27,14 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routers
-app.use('/', routes);
-app.use('/posts', posts);
-app.use('/comments', comments);
+app.use('/api', routes);
+app.use('/api/posts', posts);
+app.use('/api/comments', comments);
 // app.use('/hello-world-react', hello);
+
+app.route(/.*/).get(function(req, res) {
+  res.sendFile(__dirname + '/public/index.html')
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

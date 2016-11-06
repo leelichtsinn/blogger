@@ -1,37 +1,17 @@
 import React, { Component } from 'react';
+import { Router, Route, browserHistory } from 'react-router';
 
-import CommentBox from '../CommentBox/CommentBox';
-import CommentList from '../CommentList/CommentList';
-
-const POST_ID = "2";
+import Posts from '../Posts/Posts';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: []
-    };
-  }
-
-  componentDidMount() {
-    // ajax dom-based library usage goes here
-    $.ajax({
-      url: `/post/${POST_ID}/comments`
-    }, (comments) => {
-      this.setState({
-        comments: comments
-      });
-    });
-  }
-
-  render() {
+  render () {
     return (
-      <div>
-        <h2>Comments</h2>
-        <CommentBox postId={POST_ID}/>
-        <hr/>
-        <CommentList comments={this.state.comments} />
-      </div>
-    );
+      <Router history={browserHistory}>
+        <Route path="/">
+          <IndexRoute component={Posts} />
+          <Route path="/posts/new" component={CreatePost} />
+        </Route>
+      </Router>
+    )
   }
 }
