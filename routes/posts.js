@@ -12,7 +12,7 @@ router.get('/', function(request, response, next) {
     include: [models.users]
   }) // default order: modifiedAt
     .then(function(posts) {
-      response.render('index', { posts: posts });
+      response.json({ posts: posts });
     });
 });
 
@@ -49,7 +49,7 @@ router.get('/:id', function(request, response, next) {
     ]
   })
   .then(function(post) {
-    response.render('post', { post: post });
+    response.json({ post: post });
   })
   .catch(function(error) {
     next(error);
